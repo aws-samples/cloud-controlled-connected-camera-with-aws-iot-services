@@ -187,7 +187,7 @@ export AWS_SECRET_ACCESS_KEY=<AWS account secret key>
 export AWS_DEFAULT_REGION=<AWS region>
 ```
 
-#### Colne this repository and run setup script
+#### Clone this repository and run setup script
 
 To download the repository, run the following command:
 
