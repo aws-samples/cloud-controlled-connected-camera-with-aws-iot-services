@@ -6,18 +6,18 @@ Requires an AWS account and below components.
 
 | Component | Quantity | Description |
 | --- | --- | --- |
-| Raspberry Pi | 1 | Raspberry Pi 3 or [Raspberry Pi 4B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) is recommended |
-| Raspberry Pi Camera Module | 1 | [Raspberry Pi Camera Module 3](https://www.raspberrypi.com/products/camera-module-3/) is used in the demo |
-| Servo compatible with LEGOeds | 2 | [Sparkleiot 2kg 360 Degree Rotation Servo](https://a.co/d/8iiJeyW) is used in the demo |
+| Raspberry Pi | 1 | Raspberry Pi 3 or [Raspberry Pi 4B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)(preferred) |
+| Raspberry Pi Camera Module | 1 | [Raspberry Pi Camera Module 3](https://www.raspberrypi.com/products/camera-module-3/) |
+| Servo compatible with LEGOeds | 2 | [Sparkleiot 2kg 360 Degree Rotation Servo](https://a.co/d/8iiJeyW) |
 | Parts from LEGO Technic | 1 | [LEGO parts inventory](./docs/images/lego_technic_parts.png)|
 | Jumper Wires | 6 | [Jumper wire male to female](https://www.amazon.com/s?k=jumper+wires+male+to+female)|
-| Raspberry Pi Camera Cable | 1 | Works better if the cable longer than 12" |
+| Raspberry Pi Camera Cable | 1 | [12" Raspberry Pi Camera Cable](https://a.co/d/h6dZytU) |
 
 ## What does this repo do?
 This repository contains sample codes and helper scripts that you can use to integrate your camera module with AWS Cloud. Three AWS SDKs are used.
 - [Amazon Kinesis Video Streams Producer SDK for C++](https://github.com/awslabs/amazon-kinesis-video-streams-producer-sdk-cpp): Used to stream video to AWS cloud.
-- [Amazon Kinesis Video Streams C WebRTC SDK](https://github.com/awslabs/amazon-kinesis-video-streams-webrtc-sdk-c): Used to stream video to AWS cloud.
-- [AWS IoT Device SDK for C++ v2](https://github.com/aws/aws-iot-device-sdk-cpp-v2): Used to control the camera stand using device shadow.
+- [Amazon Kinesis Video Streams C WebRTC SDK](https://github.com/awslabs/amazon-kinesis-video-streams-webrtc-sdk-c): Used to stream video using AWS cloud.
+- [AWS IoT Device SDK for C++ v2](https://github.com/aws/aws-iot-device-sdk-cpp-v2): Used to control the camera stand using a device shadow.
 
 This will create two executables:
 - c3-camera-producer: Send video using Amazon Kinesis Video Streams Producer SDK while letting you control your camera stand using AWS IoT Device SDK.
@@ -79,7 +79,7 @@ GPIO19 (35) (36) GPIO16
 GPIO26 (37) (38) GPIO20
    GND (39) (40) GPIO21
 ```
-The setup in my environment looks like below. I used male to female jump wires to connect Servo to GPIO pins of Raspberry Pi.
+The setup in my environment looks like below. I used male to female jumper wires to connect the Servos to the GPIO pins of a Raspberry Pi.
 ![](./docs/images/camera_stand_rpi.png)
 
 ### Step2: Raspberry Pi Setup
@@ -238,11 +238,11 @@ cmake --build .
 > [!NOTE]
 > This application should be run as a root user due to the requirement of [pigpio](http://abyz.me.uk/rpi/pigpio/) library.
 
-If you created necessary resources using easy-install.sh by following this guide, you will find the run-c3-camera.sh in the project root. The run-c3-camera.sh requires DEMO type as an argument. 
+If you created necessary resources using `easy-install.sh` by following this guide, you will find the `run-c3-camera.sh` in the project's root directory. The `run-c3-camera.sh` requires DEMO type as an argument.
 - producer
 - webrtc
 
-Below example sends video using Amazon Kinesis Video Streams WebRTC SDK
+Below example will execute `c3-camera-webrtc` which sends video using Amazon Kinesis Video Streams WebRTC SDK.
 ```shell
 cd ~/dev/cloud-controlled-connected-camera-with-aws-iot-services
 ./run-c3-camera.sh webrtc
