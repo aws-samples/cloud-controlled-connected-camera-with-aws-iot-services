@@ -1,0 +1,19 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": [
+				"iot:Connect"
+			],
+			"Resource": "arn:aws:iot:[YOUR_REGION]:[YOUR_ACCOUNTID]:rolealias/KvsCameraIoTRoleAlias"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"iot:AssumeRoleWithCertificate"
+			],
+			"Resource": "arn:aws:iot:[YOUR_REGION]:[YOUR_ACCOUNTID]:rolealias/KvsCameraIoTRoleAlias"
+		}
+	]
+}
